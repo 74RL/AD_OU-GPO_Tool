@@ -101,7 +101,7 @@ $OU_GPO_Tool.Controls.Add($descriptionReset)
 
 # Sites
 $siteOUDrop = New-Object System.Windows.Forms.ComboBox
-$siteOUDrop.Text = "Choose a Department/Site OU"
+$siteOUDrop.Text = "Choose a Site OU"
 $siteOUDrop.Width = 500
 $siteOUDrop.Location = New-Object System.Drawing.Point(20, 75)
 $siteOUDrop.Font = 'Microsoft Sans Serif,10'
@@ -132,14 +132,14 @@ $OU_GPO_Tool.Controls.Add($computerOUDrop)
 
 # AD-Query ---------------------------------------------------------------------------------------------------------------------------------------
 # Change the -SearchBase for your purpose! (will not work without it)
-$sites = Get-ADOrganizationalUnit -SearchBase 'OU="Sites/Department",DC="XXXXX",DC="dom/com"' -Filter * | Where-Object { $_.DistinguishedName -match '^ou=[^,]+,ou=Sites/Department,dc="XXXXX",dc="dom/com"$' }
+$sites = Get-ADOrganizationalUnit -SearchBase 'OU=Sites,DC=Domainname,DC=dom/com' -Filter * | Where-Object { $_.DistinguishedName -match '^ou=[^,]+,OU=Sites,DC=Domainname,DC=dom/com$' }
 foreach ($site in $sites) {
     $siteOUDrop.Items.Add([PSCustomObject]@{'Name' = $site.Name; 'DistinguishedName' = $site.DistinguishedName })
 }
 
 $siteOUDrop.add_SelectedIndexChanged({
         $selectedSite = $siteOUDrop.SelectedItem.DistinguishedName
-        $statusTextbox.Text += "Switched to Site/Department: " + $siteOUDrop.SelectedItem.Name + "`r`n"
+        $statusTextbox.Text += "Switched to Site: " + $siteOUDrop.SelectedItem.Name + "`r`n"
 
         # Refresh of the user and computer dropdown boxes based on the chosen site/department OU 
         $userOUDrop.Items.Clear()
