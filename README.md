@@ -30,7 +30,7 @@ Else you should edit it for your purpose.
 
 
 ### 1. Creating organizational units (OU)
-
+---
 
 **1.1 Create an OU below Sites (User/Computer Level):**
 + choose a Site from the SiteDropdown (e.g. London)
@@ -107,6 +107,7 @@ Company.dom
 ---
 
 ### 2. Adding group policy objects (GPO)
+---
 
 **2.1 Add GPOs with inputbox:**
 + write the DisplayName of your GPOs in the textbox
@@ -137,6 +138,8 @@ Company.dom
 ---
 
 ### 3. Viewing group policy objects (GPO)
+---
+
 + choose the Site OU
 + choose the OU where you want to see the GPOs from
 + you can only use one Dropdown (User or Computer)
