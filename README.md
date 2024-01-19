@@ -36,7 +36,7 @@ Else you should edit it for your purpose.
 + choose a Site from the SiteDropdown (e.g. London)
 + let the User/ComputerDropdown untouched/empty
 + name your OU (e.g. Groups)
-+ press "Create new OU"
++ press "Create new OU":
 ```
 Company.dom
     |
@@ -60,7 +60,7 @@ Company.dom
 + if you want to create both, fill both dropdown boxes
 + name your OU (e.g. Legal)
 + press "Create new OU" or "Create a new User and Computer OU"
-+ if you pressed "Create a new User and Computer OU":
++ if you pressed "Create a new User and Computer OU" and filled both dropdown boxes:
 ```
 Company.dom
     |
