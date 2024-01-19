@@ -131,7 +131,7 @@ Company.dom
 **2.3 Add GPOs with default .txt file:**
 + create a .txt file and write the DisplayName of your GPOs in there
 + write the GPOs one below the other and without blank spaces
-+ save the file in a folder named "UserGPOS" or "ComputerGPOs" concerning your purpose
++ save the file in a folder named "UserGPOs" or "ComputerGPOs" concerning your purpose
 + move the folder in the folder where the script is saved
 + after that, you should be able to use the  "User-GPOs" and/or "Computer-GPOs" buttons in order to fill the textboxes
 ---
@@ -184,3 +184,4 @@ Get-ADObject -Identity  $newOUDN | Set-ADObject -ProtectedFromAccidentalDeletion
 ```ps1
 Get-ADObject -Identity  $newUserOUDN | Set-ADObject -ProtectedFromAccidentalDeletion:$false
 Get-ADObject -Identity  $newComputerOUDN | Set-ADObject -ProtectedFromAccidentalDeletion:$false
+```
