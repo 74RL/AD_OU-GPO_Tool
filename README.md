@@ -172,7 +172,7 @@ Set-GPInheritance -Target $newOUDN -IsBlocked Yes
 Set-GPInheritance -Target $newUserOUDN -IsBlocked Yes
 Set-GPInheritance -Target $newComputerOUDN -IsBlocked Yes
 ```
-+ if you want to block GP-Inheritance on created OUs, simply comment/cut it out
++ if you do not want to block GP-Inheritance on created OUs, simply comment/cut it out
 
 ---
 **3. Decide if you want the created OUs to be protected from accidental deletion:**
@@ -180,7 +180,6 @@ Set-GPInheritance -Target $newComputerOUDN -IsBlocked Yes
 ```ps1
 Get-ADObject -Identity  $newOUDN | Set-ADObject -ProtectedFromAccidentalDeletion:$false
 ```
-
 + line 347 + 348:
 ```ps1
 Get-ADObject -Identity  $newUserOUDN | Set-ADObject -ProtectedFromAccidentalDeletion:$false
