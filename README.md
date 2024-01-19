@@ -52,7 +52,7 @@ Company.dom
           └─ Groups
 ```
 
-
+---
 **1.2 Create an OU below User/Computer (Department Level):**
 + choose a Site from the SiteDropdown (e.g. London)
 + decide if you want to create a User OU or Computer OU or both
@@ -78,7 +78,7 @@ Company.dom
           └─ Groups
 ```
 
-
+---
 **1.3 Create an OU below Departments:**
 + choose a Site from the SiteDropdown (e.g. London)
 + decide if you want to create a User OU or Computer OU or both
@@ -116,7 +116,7 @@ Company.dom
 + use the dropdown boxes to find the OU where you want to add the GPOs or create a new OU
 + press "Add User GPOs" or "Add Computer GPOs" or "Add both GPOs" concerning your purpose
 
-
+---
 **2.2 Add GPOs with .txt file:**
 + create a .txt file and write the DisplayName of your GPOs in there
 + write the GPOs one below the other and without blank spaces
@@ -127,7 +127,7 @@ Company.dom
 + use the dropdown boxes to find the OU where you want to add the GPOs or create a new OU
 + press "Add User GPOs" or "Add Computer GPOs" or "Add both GPOs" concerning your purpose
 
-
+---
 **2.3 Add GPOs with default .txt file:**
 + create a .txt file and write the DisplayName of your GPOs in there
 + write the GPOs one below the other and without blank spaces
@@ -161,7 +161,7 @@ If you’re unsure, seek advice from a trusted and knowledgeable individual.
 $sites = Get-ADOrganizationalUnit -SearchBase 'OU=Sites,DC=Domainname,DC=dom/com' -Filter * | Where-Object { $_.DistinguishedName -match '^ou=[^,]+,OU=Sites,DC=Domainname,DC=dom/com$' }
 ```
 
-
+---
 **2. Decide if you want to block GP-Inheritance on created OUs:**
 + line 288:
 ```ps1
@@ -172,16 +172,18 @@ Set-GPInheritance -Target $newOUDN -IsBlocked Yes
 Set-GPInheritance -Target $newUserOUDN -IsBlocked Yes
 Set-GPInheritance -Target $newComputerOUDN -IsBlocked Yes
 ```
-+ if you do not need it, simply comment/cut it out
++ if you want to block GP-Inheritance on created OUs, simply comment/cut it out
 
-
+---
 **3. Decide if you want the created OUs to be protected from accidental deletion:**
 + line 285:
 ```ps1
 Get-ADObject -Identity  $newOUDN | Set-ADObject -ProtectedFromAccidentalDeletion:$false
 ```
+
 + line 347 + 348:
 ```ps1
 Get-ADObject -Identity  $newUserOUDN | Set-ADObject -ProtectedFromAccidentalDeletion:$false
 Get-ADObject -Identity  $newComputerOUDN | Set-ADObject -ProtectedFromAccidentalDeletion:$false
 ```
++ if you want the created OUs to be protected from accidental deletion, simply comment/cut it out
